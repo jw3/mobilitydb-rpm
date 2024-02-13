@@ -4,14 +4,13 @@ Version:    1.1.0~rc1
 Release:    1%{?dist}
 License:    PostgreSQL
 URL:        https://github.com/MobilityDB/MobilityDB
-Source0:    https://github.com/MobilityDB/MobilityDB/releases/tag/v1.1.0rc1
+Source0:    %{url}/archive/refs/tags/v1.1.0rc1.zip
 
 BuildRequires: clang
 BuildRequires: cmake
 BuildRequires: geos-devel
 BuildRequires: proj-devel
 BuildRequires: json-c-devel
-
 
 %description
 MobilityDB provides the necessary database support for storing and
