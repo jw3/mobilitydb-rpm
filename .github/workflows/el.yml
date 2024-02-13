@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: jw3/mock-srpm@v1
+      - uses: jw3/mock-srpm@fetch
         with:
           chroot: rocky+epel-8-x86_64
           spec: mobilitydb.spec
