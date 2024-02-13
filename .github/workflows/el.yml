@@ -1,0 +1,24 @@
+name: el-rpm
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rpm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jw3/mock-srpm@v1
+        with:
+          chroot: rocky+epel-8-x86_64
+          spec: mobilitydb.spec
+      - uses: jw3/mock-rpm@v1
+        with:
+          chroot: rocky+epel-8-x86_64
+          srpm: mobilitydb-*.src.rpm
