@@ -19,6 +19,7 @@ jobs:
           chroot: rocky+epel-8-x86_64
           spec: mobilitydb.spec
           fetch-sources: true
+          cache: true
       - uses: jw3/mock-rpm@v1
         with:
           chroot: rocky+epel-8-x86_64
