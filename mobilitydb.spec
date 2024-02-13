@@ -30,3 +30,6 @@ make install
 
 %files -n %{name}
 
+%changelog
+* Tue Feb 13 2024 John Wass <jwass3@gmail.com> 1.1.0~rc1-1
+- New release
