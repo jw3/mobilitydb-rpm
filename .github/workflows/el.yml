@@ -24,3 +24,5 @@ jobs:
         with:
           chroot: rocky+epel-8-x86_64
           srpm: mobilitydb-*.src.rpm
+          cache: true
+          debug: true
