@@ -8,11 +8,11 @@ MobilityDB rpm builds
 ## install
 
 ```bash
-dnf install epel-release
+dnf install -y epel-release
 crb enable
 dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
 dnf -qy module disable postgresql
-dnf install -y mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm
+dnf install -y mobilitydb-1.0.0-1.el8.x86_64.rpm
 ```
 
 ## test
@@ -30,7 +30,7 @@ NOTICE:  installing required extension "postgis"
 CREATE EXTENSION
  mobilitydb_version 
 --------------------
- MobilityDB 1.1.0
+ MobilityDB 1.0.0
 (1 row)
 ```
 
@@ -160,7 +160,7 @@ mesa-libGL-23.1.4-1.el8.x86_64
 mesa-libgbm-23.1.4-1.el8.x86_64                                                                                      
 mesa-libglapi-23.1.4-1.el8.x86_64                                                                                    
 minizip-2.8.9-2.el8.x86_64                                                                                           
-mobilitydb-1.1.0~rc1-1.el8.x86_64                                                                                    
+mobilitydb-1.0.0-1.el8.x86_64                                                                                        
 mtdev-1.1.5-12.el8.x86_64                                                                                            
 ncurses-6.1-10.20180224.el8.x86_64                                                                                   
 netcdf-4.7.0-3.el8.x86_64                                                                                            
@@ -226,11 +226,11 @@ pkgconf-m4-1.4.2-1.el8.noarch
 pkgconf-pkg-config-1.4.2-1.el8.x86_64                                                                                
 poppler-20.11.0-10.el8.x86_64                                                                                        
 poppler-data-0.4.9-1.el8.noarch                                                                                      
-postgis33_15-3.3.5-1PGDG.rhel8.x86_64                                                                                
-postgresql15-15.6-1PGDG.rhel8.x86_64                                                                                 
-postgresql15-contrib-15.6-1PGDG.rhel8.x86_64                                                                         
-postgresql15-libs-15.6-1PGDG.rhel8.x86_64                                                                            
-postgresql15-server-15.6-1PGDG.rhel8.x86_64                                                                          
+postgis33_14-3.3.5-1PGDG.rhel8.x86_64                                                                                
+postgresql14-14.11-1PGDG.rhel8.x86_64                                                                                
+postgresql14-contrib-14.11-1PGDG.rhel8.x86_64                                                                        
+postgresql14-libs-14.11-1PGDG.rhel8.x86_64                                                                           
+postgresql14-server-14.11-1PGDG.rhel8.x86_64                                                                         
 procps-ng-3.3.15-14.el8.x86_64                                                                                       
 proj-6.3.2-4.el8.x86_64                                                                                              
 proj-datumgrid-1.8-6.3.2.4.el8.noarch                                                                                
