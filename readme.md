@@ -254,3 +254,18 @@ xerces-c-3.2.5-1.el8.x86_64
 xkeyboard-config-2.28-1.el8.noarch                                                                                   
 xz-5.2.4-4.el8_6.x86_64
 ```
+
+## Containerfile
+
+This can be tested with a container build also.
+
+```shell
+podman build -t mobilitydb-postgres .
+podman run --rm -d --name pg mobilitydb-postgres
+podman exec -it -u postgres pg psql
+psql (15.6)
+Type "help" for help.
+
+postgres=# 
+```
+
