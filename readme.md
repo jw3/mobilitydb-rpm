@@ -269,3 +269,12 @@ Type "help" for help.
 postgres=# 
 ```
 
+or from the host `psql`
+
+```shell
+podman build -t mobilitydb-postgres .
+podman run --rm -d --name pg -p 5432:5432 mobilitydb-postgres
+psql -h localhost -p 5432 -U postgres --password
+```
+
+default password `Postgres`
