@@ -34,10 +34,8 @@ RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/15/data/ --username=postgres 
 RUN echo "local all all trust" > /var/lib/pgsql/15/data/pg_hba.conf
 RUN echo "host all all all md5" >> /var/lib/pgsql/15/data/pg_hba.conf
 
+COPY postgresql.conf /var/lib/pgsql/15/data
 RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/15/data/postgresql.conf
-
-RUN echo "shared_preload_libraries = 'postgis-3'" > /var/lib/pgsql/15/data/postgresql.auto.conf
-RUN echo "max_locks_per_transaction = '128'" >> /var/lib/pgsql/15/data/postgresql.auto.conf
 
 RUN systemctl enable postgresql-15
 
