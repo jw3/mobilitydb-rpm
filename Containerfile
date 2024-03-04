@@ -30,9 +30,14 @@ RUN dnf install -y /tmp/mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm
 
 ENV PATH=$PATH:/usr/pgsql-15/bin
 RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/15/data/ --username=postgres --pwfile=<(printf "%s\n" "Postgres")'
+
 RUN echo "local all all trust" > /var/lib/pgsql/15/data/pg_hba.conf
 RUN echo "host all all all md5" >> /var/lib/pgsql/15/data/pg_hba.conf
+
 RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/15/data/postgresql.conf
+
+RUN echo "shared_preload_libraries = 'postgis-3'" > /var/lib/pgsql/15/data/postgresql.auto.conf
+RUN echo "max_locks_per_transaction = '128'" >> /var/lib/pgsql/15/data/postgresql.auto.conf
 
 RUN systemctl enable postgresql-15
 

@@ -15,6 +15,10 @@ dnf -qy module disable postgresql
 dnf install -y mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm
 ```
 
+### preload library
+
+https://postgis.net/documentation/getting_started/install_windows/enabling_postgis/#mobilitydb
+
 ## test
 
 ```bash
