@@ -27,6 +27,7 @@ FROM base
 
 COPY --from=build /root/rpmbuild/RPMS/x86_64/mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm /tmp
 RUN dnf install -y /tmp/mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm
+RUN dnf install -y nano
 
 ENV PATH=$PATH:/usr/pgsql-15/bin
 RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/15/data/ --username=postgres --pwfile=<(printf "%s\n" "Postgres")'
