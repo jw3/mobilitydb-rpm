@@ -26,8 +26,7 @@ RUN rpmbuild -bb SPECS/mobilitydb.spec
 FROM base
 
 COPY --from=build /root/rpmbuild/RPMS/x86_64/mobilitydb-1.1.0~rc2-1.el8.x86_64.rpm /tmp
-RUN dnf install -y /tmp/mobilitydb-1.1.0~rc2-1.el8.x86_64.rpm
-RUN dnf install -y nano
+RUN dnf install -y nano /tmp/mobilitydb-1.1.0~rc2-1.el8.x86_64.rpm && dnf clean -y all
 
 ENV PATH=$PATH:/usr/pgsql-16/bin
 RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/15/data/ --username=postgres --pwfile=<(printf "%s\n" "Postgres")'
