@@ -29,13 +29,13 @@ COPY --from=build /root/rpmbuild/RPMS/x86_64/mobilitydb-1.1.0~rc2-1.el8.x86_64.r
 RUN dnf install -y nano /tmp/mobilitydb-1.1.0~rc2-1.el8.x86_64.rpm && dnf clean -y all
 
 ENV PATH=$PATH:/usr/pgsql-16/bin
-RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/15/data/ --username=postgres --pwfile=<(printf "%s\n" "Postgres")'
+RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/16/data/ --username=postgres --pwfile=<(printf "%s\n" "Postgres")'
 
-RUN echo "local all all trust" > /var/lib/pgsql/15/data/pg_hba.conf
-RUN echo "host all all all md5" >> /var/lib/pgsql/15/data/pg_hba.conf
+RUN echo "local all all trust" > /var/lib/pgsql/16/data/pg_hba.conf
+RUN echo "host all all all md5" >> /var/lib/pgsql/16/data/pg_hba.conf
 
 COPY postgresql.conf /var/lib/pgsql/16/data
-    RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/15/data/postgresql.conf
+    RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/16/data/postgresql.conf
 
 RUN systemctl enable postgresql-16
 
