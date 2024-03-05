@@ -35,7 +35,7 @@ RUN echo "local all all trust" > /var/lib/pgsql/16/data/pg_hba.conf
 RUN echo "host all all all md5" >> /var/lib/pgsql/16/data/pg_hba.conf
 
 COPY postgresql.conf /var/lib/pgsql/16/data
-    RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/16/data/postgresql.conf
+RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/16/data/postgresql.conf
 
 RUN systemctl enable postgresql-16
 
