@@ -18,27 +18,27 @@ COPY mobilitydb.spec SPECS
 RUN spectool -g SPECS/mobilitydb.spec -C SOURCES
 RUN dnf builddep -y SPECS/mobilitydb.spec
 
-RUN ln -s /usr/pgsql-15/bin/pg_config /usr/bin
+RUN ln -s /usr/pgsql-16/bin/pg_config /usr/bin
 RUN rpmbuild -bb SPECS/mobilitydb.spec
 
 # ----------------------
 
 FROM base
 
-COPY --from=build /root/rpmbuild/RPMS/x86_64/mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm /tmp
-RUN dnf install -y /tmp/mobilitydb-1.1.0~rc1-1.el8.x86_64.rpm
+COPY --from=build /root/rpmbuild/RPMS/x86_64/mobilitydb-1.1.0~rc2-1.el8.x86_64.rpm /tmp
+RUN dnf install -y /tmp/mobilitydb-1.1.0~rc2-1.el8.x86_64.rpm
 RUN dnf install -y nano
 
-ENV PATH=$PATH:/usr/pgsql-15/bin
+ENV PATH=$PATH:/usr/pgsql-16/bin
 RUN su postgres -c 'initdb --pgdata=/var/lib/pgsql/15/data/ --username=postgres --pwfile=<(printf "%s\n" "Postgres")'
 
 RUN echo "local all all trust" > /var/lib/pgsql/15/data/pg_hba.conf
 RUN echo "host all all all md5" >> /var/lib/pgsql/15/data/pg_hba.conf
 
-COPY postgresql.conf /var/lib/pgsql/15/data
-RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/15/data/postgresql.conf
+COPY postgresql.conf /var/lib/pgsql/16/data
+    RUN echo "listen_addresses = '0.0.0.0'" >> /var/lib/pgsql/15/data/postgresql.conf
 
-RUN systemctl enable postgresql-15
+RUN systemctl enable postgresql-16
 
 EXPOSE 5432
 
